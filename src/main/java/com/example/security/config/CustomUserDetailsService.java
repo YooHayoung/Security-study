@@ -2,6 +2,7 @@ package com.example.security.config;
 
 import com.example.security.domain.user.entity.User;
 import com.example.security.domain.user.repository.UserRepository;
+import com.example.security.jwt.JwtAuthentication;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         log.info("user.password : {}", user.getPassword());
 
         log.info("End loadUserByUsername");
-        return new CustomUser(user);
+
+        return new JwtAuthentication(user);
     }
 }
