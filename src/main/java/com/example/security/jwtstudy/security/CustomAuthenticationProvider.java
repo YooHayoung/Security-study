@@ -1,6 +1,6 @@
-package com.example.security.jwtstudy.config;
+package com.example.security.jwtstudy.security;
 
-import com.example.security.jwtstudy.jwt.JwtAuthentication;
+import com.example.security.jwtstudy.security.jwt.JwtAuthentication;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationProvider;

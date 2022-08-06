@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.Optional;
 
 @Service
@@ -26,5 +27,14 @@ public class RefreshTokenService {
 
     public Optional<RefreshToken> findByToken(String token) {
         return refreshTokenRepository.findByToken(token);
+    }
+
+    public Optional<RefreshToken> findByTokenFetch(String token) {
+        return refreshTokenRepository.findByTokenFetch(token);
+    }
+
+    @Transactional
+    public void update(RefreshToken refreshToken, String token, Instant expiryDate) {
+        refreshToken.updateToken(token, expiryDate);
     }
 }

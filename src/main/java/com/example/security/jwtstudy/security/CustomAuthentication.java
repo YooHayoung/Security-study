@@ -1,4 +1,4 @@
-package com.example.security.jwtstudy.config;
+package com.example.security.jwtstudy.security;
 
 import com.example.security.jwtstudy.domain.user.entity.User;
 import lombok.Getter;

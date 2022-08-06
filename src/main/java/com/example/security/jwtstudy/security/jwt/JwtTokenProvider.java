@@ -1,4 +1,4 @@
-package com.example.security.jwtstudy.jwt;
+package com.example.security.jwtstudy.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;

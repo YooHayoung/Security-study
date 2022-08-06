@@ -1,5 +1,9 @@
 package com.example.security.jwtstudy.domain.user.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
+
 public enum Role {
     ADMIN("ROLE_ADMIN"),
     USER("ROLE_USER"),

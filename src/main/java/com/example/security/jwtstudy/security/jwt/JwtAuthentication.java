@@ -1,4 +1,4 @@
-package com.example.security.jwtstudy.jwt;
+package com.example.security.jwtstudy.security.jwt;
 
 import lombok.Getter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
