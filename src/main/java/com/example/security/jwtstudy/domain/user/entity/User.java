@@ -5,8 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@Getter
+@Entity @Getter
 @Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {

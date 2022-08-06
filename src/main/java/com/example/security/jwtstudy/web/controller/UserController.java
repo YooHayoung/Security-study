@@ -33,7 +33,6 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequestDto requestDto) {
-        // 유저 아이디 비밀번호 확인하여 토큰 발급 로직
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                 new UsernamePasswordAuthenticationToken(requestDto.getLoginId(), requestDto.getPassword());
         Authentication authenticate =
@@ -41,7 +40,6 @@ public class UserController {
                         .authenticate(usernamePasswordAuthenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authenticate);
 
-        // TODO Response Header에 담기
         Map<String, String> tokens = jwtTokenUtils.createTokens(authenticate);
 
         return ResponseEntity.ok(tokens);
