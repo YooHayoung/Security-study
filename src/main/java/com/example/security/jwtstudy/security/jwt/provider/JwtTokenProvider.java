@@ -1,5 +1,6 @@
-package com.example.security.jwtstudy.security.jwt;
+package com.example.security.jwtstudy.security.jwt.provider;
 
+import com.example.security.jwtstudy.security.jwt.JwtTokenUtils;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,8 +36,9 @@ public class JwtTokenProvider {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 
-        UserDetails principal = new User(claims.getSubject(), "", authorities);
+//        UserDetails principal = new User(claims.getSubject(), "", authorities);
+//        log.info("JwtTokenProvider-userDetails : {}", principal);
 
-        return new UsernamePasswordAuthenticationToken(principal, "", authorities);
+        return new UsernamePasswordAuthenticationToken(Long.parseLong(claims.getSubject()), "", authorities);
     }
 }

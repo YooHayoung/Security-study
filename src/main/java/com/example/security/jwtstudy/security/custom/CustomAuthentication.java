@@ -1,4 +1,4 @@
-package com.example.security.jwtstudy.security;
+package com.example.security.jwtstudy.security.custom;
 
 import com.example.security.jwtstudy.domain.user.entity.User;
 import lombok.Getter;
@@ -28,7 +28,7 @@ public class CustomAuthentication implements Authentication {
 
     @Override
     public Object getCredentials() {
-        return user.getPassword();
+        return "";
     }
 
     @Override

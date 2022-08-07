@@ -1,4 +1,4 @@
-package com.example.security.jwtstudy.security.jwt;
+package com.example.security.jwtstudy.security.jwt.filter;
 
 import com.example.security.jwtstudy.exception.jwt.AccessTokenExpiredException;
 import lombok.RequiredArgsConstructor;

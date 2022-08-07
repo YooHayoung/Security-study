@@ -1,7 +1,7 @@
-package com.example.security.jwtstudy.security.jwt;
+package com.example.security.jwtstudy.security.jwt.filter;
 
 import com.example.security.jwtstudy.exception.jwt.AccessTokenExpiredException;
-import com.example.security.jwtstudy.exception.jwt.UnAuthenticationException;
+import com.example.security.jwtstudy.security.jwt.provider.JwtTokenProvider;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (StringUtils.hasText(accessToken) && jwtTokenProvider.validate(accessToken)) {
                 // 검증에 성공하면 토큰으로부터 사용자 정보를 뽑아낸다.
                 Authentication authentication = jwtTokenProvider.getAuthentication(accessToken);
+                log.info("JwtAuthenticationFilter-authentication : {}", authentication);
                 // SecurityContextHolder 에 저장시킨다.
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }

@@ -13,7 +13,7 @@ public class JwtAuthentication extends User {
     private com.example.security.jwtstudy.domain.user.entity.User user;
     public JwtAuthentication(com.example.security.jwtstudy.domain.user.entity.User user) {
         super(user.getId().toString(),
-                user.getPassword(),
+                "",
                 Arrays.stream(new String[]{user.getRole().name()})
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList())

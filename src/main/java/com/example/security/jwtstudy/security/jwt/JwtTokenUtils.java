@@ -1,7 +1,7 @@
 package com.example.security.jwtstudy.security.jwt;
 
 import com.example.security.jwtstudy.domain.refreshtoken.service.RefreshTokenService;
-import com.example.security.jwtstudy.security.CustomAuthentication;
+import com.example.security.jwtstudy.security.custom.CustomAuthentication;
 import com.example.security.jwtstudy.domain.refreshtoken.entity.RefreshToken;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class JwtTokenUtils {
+
+    // TODO 로직 수정하기
 
     @Value("${jwt.secret}")
     private String secretKey;
@@ -86,7 +88,7 @@ public class JwtTokenUtils {
 
         return Jwts.builder()
                 .signWith(Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS512)
-                .setSubject(authentication.getName())
+                .setSubject(authentication.getPrincipal().toString())
                 .claim("auth", authorities)
                 .setIssuer("example")
                 .setIssuedAt(Date.from(now))

@@ -1,12 +1,13 @@
 package com.example.security.jwtstudy.domain.user.entity;
 
-import org.springframework.security.core.GrantedAuthority;
+import lombok.Getter;
 
-import java.util.Collection;
 
+@Getter
 public enum Role {
     ADMIN("ROLE_ADMIN"),
     USER("ROLE_USER"),
+    GUEST("GUEST"),
     ;
 
     private final String value;

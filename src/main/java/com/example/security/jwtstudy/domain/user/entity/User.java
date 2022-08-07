@@ -5,52 +5,63 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity @Getter
+@ToString
+@Entity
+@Getter
 @Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
 
-    private String email;
+    private String oauthId;
 
-    private String password;
+    private String email;
 
     private String name;
 
-    private LocalDate birth;
+    private String profileImgUrl;
 
-    @Embedded
-    private Address address;
+    @Enumerated(EnumType.STRING)
+    private OAuth2Provider provider;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @Builder
-    public User(String email, String password, String name, LocalDate birth, Address address, Role role) {
+    public User(String oauthId, String email, String name, String profileImgUrl, OAuth2Provider provider) {
+        this.oauthId = oauthId;
         this.email = email;
-        this.password = password;
         this.name = name;
-        this.birth = birth;
-        this.address = address;
-        this.role = role;
+        this.profileImgUrl = profileImgUrl;
+        this.provider = provider;
+        this.role = Role.USER;
     }
 
     public void updateEmail(String email) {
-        this.email = email;
-    }
-
-    public void updatePassword(String password) {
-        this.password = password;
+        if (!email.equals(this.email)) {
+            this.email = email;
+        }
     }
 
     public void updateName(String name) {
-        this.name = name;
+        if (!name.equals(this.name)) {
+            this.name = name;
+        }
     }
 
-    public void updateAddress(Address address) {
-        this.address = address;
+    public void updateProfileImgUrl(String profileImgUrl) {
+        if (!profileImgUrl.equals(this.profileImgUrl)) {
+            this.profileImgUrl = profileImgUrl;
+        }
+    }
+
+    public void updateUserInfo(String name, String email, String profileImgUrl) {
+        updateName(name);
+        updateEmail(email);
+        updateProfileImgUrl(profileImgUrl);
     }
 }
